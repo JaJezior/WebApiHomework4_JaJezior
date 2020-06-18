@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectorApp", "ElectorApp\El
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectoralCommisionApp", "ElectoralCommisionApp\ElectoralCommisionApp.csproj", "{BA0CEEF4-82FB-4CB0-9787-D56E569009F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Service", "WebApi.Service\WebApi.Service.csproj", "{679EA34D-B5D0-4690-AFAC-7669E5AE992C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Service", "WebApi.Service\WebApi.Service.csproj", "{679EA34D-B5D0-4690-AFAC-7669E5AE992C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiHomework4.Tests", "WebApi.DataLogic.Tests\WebApiHomework4.Tests.csproj", "{3C95A580-A773-4C41-9963-77C36329DC98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{679EA34D-B5D0-4690-AFAC-7669E5AE992C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{679EA34D-B5D0-4690-AFAC-7669E5AE992C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{679EA34D-B5D0-4690-AFAC-7669E5AE992C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C95A580-A773-4C41-9963-77C36329DC98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C95A580-A773-4C41-9963-77C36329DC98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C95A580-A773-4C41-9963-77C36329DC98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C95A580-A773-4C41-9963-77C36329DC98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

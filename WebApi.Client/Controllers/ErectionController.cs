@@ -8,12 +8,12 @@ namespace WebApi.Client.Controllers
     [Route("[controller]")] //Nazwa, czyli url [controller] jest brana z nazwy klasy ___Controller, tutaj Election
     public class ElectionController : ControllerBase
     {
-       
-        private StateOfElectionSqlService _stateOfElection = new StateOfElectionSqlService();
-        public ElectionController(ICandidateRepository candidateRepository)
+
+        private IStateOfElectionRepository _stateOfElection;
+        public ElectionController()
         {
             //_electorRepository = new ElectorSqlService();
-            //_candidateRepository = candidateRepository;
+            _stateOfElection = new StateOfElectionSqlService();
             //to jest sposób na DI dla WebApi (generyczna funckja VS?)
         }
         [HttpGet]

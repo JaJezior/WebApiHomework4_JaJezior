@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApi.DataLogic;
@@ -13,33 +14,17 @@ namespace WebApi.Client.Controllers
     [Route("[controller]")]
     public class CandidateController : ControllerBase
     {
-        
-        private IElectorRepository electorRepository;
-        private ICandidateRepository _candidateRepository;
-
-        public CandidateController(/*ICandidateRepository candidateRepository*/)
+        ICandidateRepository _candidateRepository = new CandidateSqlService();
+        //ICandidateRepository _candidateRepository;
+        public CandidateController()
         {
-            //electorRepository = new ElectorSqlService();
-
-            _candidateRepository = new CandidateSqlService();
-            //_candidateRepository = candidateRepository;
-            //to jest sposób na DI dla WebApi (generyczna funckja VS?)
-            
-            //var c1 = new Candidate { Id = 1, FirstName = "Andżej", LastName = "Duduś" };
-            //var c2 = new Candidate { Id = 2, FirstName = "Andriu", LastName = "Leppa" };
-            //_candidateRepository.AddCandidate(c1);
-            //_candidateRepository.AddCandidate(c2);
+            //var container = ContainerBuilderCreator.CreateBasicContainerBuilder().Build();
+            //_candidateRepository = container.Resolve<CandidateSqlService>();
         }
         [HttpGet]
         public List<Candidate> Get()
         {
-            //var testList = new List<Candidate>();
-            //var c1 = new Candidate { Id = 1, FirstName = "Andżej", LastName = "Duduś" };
-            //var c2 = new Candidate { Id = 2, FirstName = "Andriu", LastName = "Leppa" };
-            
             List<Candidate> listOfCandidates = _candidateRepository.GetListOfCandidates();
-            //listOfCandidates.Add(c1);
-            //listOfCandidates.Add(c2);
             return listOfCandidates;
         }
         [HttpPost]

@@ -8,7 +8,7 @@ using WebApi.Service;
 
 namespace ElectorApp
 {
-    class Program
+    public class Program
     {
         static void Main()
         {
@@ -35,7 +35,8 @@ namespace ElectorApp
             else
             {
                 var userPESEL = AskUserForPESEL();
-                ValidatePESEL(userPESEL);
+                var listOfElectors = GetListOfElectors();
+                ValidatePESEL(userPESEL, listOfElectors);
 
                 List<Candidate> listOfCandidates = GetListOfCandidates();
                 PrintListOfCandidates(listOfCandidates);
@@ -82,10 +83,9 @@ namespace ElectorApp
             return webApiService.GetListOfCandidates();
         }
 
-        private bool ValidatePESEL(int userPESEL)
+        public bool ValidatePESEL(int userPESEL, List<Elector> listOfElectors)
         {
             bool isPESELvalid = false;
-            var listOfElectors = GetListOfElectors();
             if (listOfElectors.Exists(x => x.PESEL == userPESEL))
             {
                 isPESELvalid = true;

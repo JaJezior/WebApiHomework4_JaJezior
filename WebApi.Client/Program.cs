@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebApi.Model;
+using Autofac;
 
 namespace WebApi.Client
 {
@@ -26,6 +27,7 @@ namespace WebApi.Client
                     context.StateOfElection.Add(new StateOfElection());
                 }
             }
+            //var container = ContainerBuilderCreator.CreateBasicContainerBuilder().Build();
 
             //inicjalizacja SQL i autofakap
             CreateHostBuilder(args).Build().Run();

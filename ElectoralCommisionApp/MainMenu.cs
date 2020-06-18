@@ -75,7 +75,7 @@ namespace ElectoralCommisionApp
             {
                 Console.WriteLine("Election has been ended before.");
             }
-            if (webApiService.GetStateOfElection().IsElectionStarted == true)
+            if (webApiService.GetStateOfElection().IsElectionStarted == true && webApiService.GetStateOfElection().IsElectionEnded == false)
             {
                 webApiService.EndElection();
                 Console.WriteLine("Election process has been ended. Voting unavailable.");
@@ -127,7 +127,7 @@ namespace ElectoralCommisionApp
             }
         }
 
-        private int GetSumOfVotes(List<Candidate> listOfCandidates)
+        public int GetSumOfVotes(List<Candidate> listOfCandidates)
         {
             int sumOfVotes = 0;
             foreach (Candidate candidate in listOfCandidates)
