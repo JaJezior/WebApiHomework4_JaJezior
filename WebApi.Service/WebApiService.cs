@@ -35,7 +35,7 @@ namespace WebApi.Service
         {
             for (int x=0; x <= amountOfElectors; x++)
             {
-                var elector = new Elector() { PESEL = x };
+                var elector = new Elector() { PESEL = 1000 + x };
                 var stringJson = JsonConvert.SerializeObject(elector);
                 HttpContent content = new StringContent(stringJson, Encoding.UTF8, "application/json");
                 var response = _client.PostAsync("Elector", content).Result;

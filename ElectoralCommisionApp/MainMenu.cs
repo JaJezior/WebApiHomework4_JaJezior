@@ -17,14 +17,24 @@ namespace ElectoralCommisionApp
             AddMenuItem("End election", EndElection);
             AddMenuItem("Add candidate", AddCandidate);
             AddMenuItem("Initialize list of electors", AddElectors);
+            AddMenuItem("Show list of electors", ShowListOfElectors);
         }
         WebApiService webApiService = new WebApiService();
 
+        private void ShowListOfElectors()
+        {
+            var listOfElectors = webApiService.GetListOfElectors();
+            foreach (Elector elector in listOfElectors)
+            {
+                Console.WriteLine($"ID: {elector.Id}, PESEL: {elector.PESEL}");
+            }
+        }
         private void AddElectors()
         {
             while (true)
             {
                 Console.WriteLine("How many fake, russian electors would you like to create?");
+                Console.WriteLine("(this will create target amount of electors with PESEL starting from 1000++)");
                 string userInput = Console.ReadLine();
                 if (int.TryParse(userInput, out int amount))
                 {
@@ -49,8 +59,6 @@ namespace ElectoralCommisionApp
             {
                 var candidate = new Candidate();
 
-                //candidate.Id = AskUserForId();
-
                 Console.WriteLine("Enter candidate's first name:");
                 candidate.FirstName = Console.ReadLine();
 
@@ -61,7 +69,6 @@ namespace ElectoralCommisionApp
 
 
                 Console.WriteLine($"Candidate: {candidate.FirstName} {candidate.LastName}  has been added.");
-                //Console.WriteLine($"Candidate: {candidate.Id}. {candidate.FirstName} {candidate.LastName}  has been added.");
             }
         }
 
@@ -135,23 +142,6 @@ namespace ElectoralCommisionApp
                 sumOfVotes += candidate.Votes;
             }
             return sumOfVotes;
-        }
-
-        private int AskUserForId()
-        {
-            while (true)
-            {
-                Console.WriteLine("Enter candidate's ID:");
-                string userInput = Console.ReadLine();
-                if (int.TryParse(userInput, out int id) && !webApiService.GetListOfCandidates().Exists(x => x.Id == id))
-                {
-                    return id;
-                }
-                else
-                {
-                    Console.WriteLine("Choosen ID already exists or your input had incorrect format.");
-                }
-            }
         }
     }
 }
