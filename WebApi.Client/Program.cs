@@ -15,6 +15,7 @@ namespace WebApi.Client
     {
         public static void Main(string[] args)
         {
+            //inicjalizacja SQL i dependency injection
             //using (var context = new Context())
             //{
             //    context.Database.EnsureDeleted();
@@ -28,8 +29,8 @@ namespace WebApi.Client
                 }
             }
             //var container = ContainerBuilderCreator.CreateBasicContainerBuilder().Build();
-
-            //inicjalizacja SQL i autofakap
+            //inicjalzacja autofaca - zdecydowa³em siê na "wbudowane" DI, ale zostawiam jako notatki
+            
             CreateHostBuilder(args).Build().Run();
         }
 

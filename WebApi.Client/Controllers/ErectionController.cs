@@ -10,16 +10,14 @@ namespace WebApi.Client.Controllers
     {
 
         private IStateOfElectionRepository _stateOfElection;
-        public ElectionController()
+        public ElectionController(IStateOfElectionRepository stateOfElection)
         {
-            //_electorRepository = new ElectorSqlService();
-            _stateOfElection = new StateOfElectionSqlService();
+            _stateOfElection = stateOfElection;
             //to jest sposób na DI dla WebApi (generyczna funckja VS?)
         }
         [HttpGet]
         public StateOfElection GetElectionStatus()
         {
-            //_soeRepository.InitializeStateOfElection();
             var stateOfElection = _stateOfElection.GetStateOfElection();
             return stateOfElection;
         }

@@ -14,9 +14,9 @@ namespace WebApi.Client.Controllers
     public class ElectorController : ControllerBase
     {
         private IElectorRepository _electorRepository;
-        public ElectorController(ICandidateRepository candidateRepository)
+        public ElectorController(IElectorRepository electorRepository)
         {
-            _electorRepository = new ElectorSqlService();
+            _electorRepository = electorRepository;
             //to jest sposób na DI dla WebApi (generyczna funckja VS?)
         }
         [HttpGet]

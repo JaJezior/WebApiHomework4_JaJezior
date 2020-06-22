@@ -14,12 +14,13 @@ namespace WebApi.Client.Controllers
     [Route("[controller]")]
     public class CandidateController : ControllerBase
     {
-        ICandidateRepository _candidateRepository = new CandidateSqlService();
-        //ICandidateRepository _candidateRepository;
-        public CandidateController()
+        //ICandidateRepository _candidateRepository = new CandidateSqlService();
+        ICandidateRepository _candidateRepository;
+        public CandidateController(ICandidateRepository candidateRepository)
         {
             //var container = ContainerBuilderCreator.CreateBasicContainerBuilder().Build();
             //_candidateRepository = container.Resolve<CandidateSqlService>();
+            _candidateRepository = candidateRepository;
         }
         [HttpGet]
         public List<Candidate> Get()

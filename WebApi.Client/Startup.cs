@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebApi.DataLogic;
+using WebApi.Model;
 
 namespace WebApi.Client
 {
@@ -28,6 +29,9 @@ namespace WebApi.Client
         {
             services.AddControllers();
             services.AddScoped<ICandidateRepository, CandidateSqlService>();
+            services.AddScoped<IElectorRepository, ElectorSqlService>();
+            services.AddScoped<IStateOfElectionRepository, StateOfElectionSqlService>();
+            services.AddDbContext<Context>();
             //do daje dependency interfejsu, wywo³uje siê to kontrolerze w konstruktorze
         }
 
